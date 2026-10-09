@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DrwnStat — Player Card Maker</title>
+  <meta name="description" content="Create football-style stat cards for players in any game: 5 stats and a custom picture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Drwn<span>Stat</span></div>
+    <p class="tagline">Make football-style stat cards for players in any game.</p>
+  </header>
+
+  <main class="layout">
+    <section class="preview">
+      <div class="canvas-wrap">
+        <canvas id="card" width="800" height="1120" aria-label="Stat card preview"></canvas>
+      </div>
+      <p class="hint">Drag the picture on the card to move it. Scroll or use the zoom slider to resize it.</p>
+      <div class="actions">
+        <button id="download" class="btn primary">Download PNG</button>
+        <button id="save" class="btn">Save to collection</button>
+        <button id="new" class="btn ghost">New card</button>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="editor">
+      <fieldset>
+        <legend>Player</legend>
+        <label>Game
+          <input id="game" type="text" maxlength="28" placeholder="e.g. Valorant">
+        </label>
+        <label>Player name
+          <input id="name" type="text" maxlength="22" placeholder="e.g. Drwn">
+        </label>
+        <div class="row">
+          <label>Position / role
+            <input id="position" type="text" maxlength="5" placeholder="ST">
+          </label>
+          <label>Team / clan
+            <input id="team" type="text" maxlength="30" placeholder="optional">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Picture</legend>
+        <div class="row">
+          <label class="file-btn btn">Upload image
+            <input id="image" type="file" accept="image/*" hidden>
+          </label>
+          <button id="clearImage" class="btn ghost" type="button">Remove</button>
+          <button id="resetImage" class="btn ghost" type="button">Re-center</button>
+        </div>
+        <label>Zoom
+          <input id="zoom" type="range" min="0.5" max="3" step="0.01" value="1">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Stats</legend>
+        <label>Preset
+          <select id="preset"></select>
+        </label>
+        <div id="stats" class="stats"></div>
+        <div class="row overall">
+          <label class="check"><input id="autoOverall" type="checkbox" checked> Overall = average of stats</label>
+          <label>Overall
+            <input id="overall" type="number" min="1" max="99" value="75" disabled>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Card style</legend>
+        <div id="themes" class="themes" role="radiogroup" aria-label="Card style"></div>
+      </fieldset>
+    </section>
+  </main>
+
+  <section class="collection">
+    <h2>Your collection</h2>
+    <p class="muted" id="emptyCollection">Saved cards appear here. They're stored in this browser only.</p>
+    <div id="gallery" class="gallery"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
