@@ -18,7 +18,15 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-To host it for free, enable **GitHub Pages** for this repo (Settings → Pages → deploy from branch, root folder).
+## Put it online (public web address)
+
+The workflow in `.github/workflows/pages.yml` publishes the site to GitHub Pages on every push. One-time setup:
+
+1. **Make the repo public:** Settings → General → Danger Zone → *Change visibility*. Pages on a private repo needs a paid GitHub plan.
+2. **Turn on Pages:** Settings → Pages → *Build and deployment* → Source: **GitHub Actions**.
+3. **Deploy:** push any change, or go to Actions → *Deploy site to GitHub Pages* → *Run workflow*.
+
+The site will be at **https://titaniccheese.github.io/DrwnStat/**. Every later push updates it automatically.
 
 ## Files
 
